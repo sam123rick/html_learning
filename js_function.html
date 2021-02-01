@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fun(a, b) {
+            //alert(a + b);
+        }
+        var fun2 = function(a, b) {
+            //alert(a * b);
+        }
+        fun(1);
+
+        function add() {
+            let sum = 0;
+            for (let i = 0; i < arguments.length; i ++) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+
+        let sum = add(1, 2, 3, 4);
+        //alert(sum);
+
+        /*
+        arr = new Array(element list)
+        arr = new Array(array initial size)
+        arr = [element list]
+        arr = new Array() -> empty array
+         */
+        let arr1 = new Array(1, 2, 3);
+        let arr2 = new Array(5);
+        let arr3 = [1, 2, 3, 4];
+
+        let date = new Date();
+
+        // pay attention to add \ to \w if use 1st expression since it was defined as a string
+        let reg = new RegExp("^\\w{6,12}$");
+        let reg2 = /^\w{6,12}$/;
+
+        alert(reg2.test("abcde"));
+
+        let jsAlert = "alert(123)";
+        eval(jsAlert);
+
+    </script>
+</head>
+<body>
+    <img id="icon" src="image/icon_6.jpg">
+    <h1 id="title"> This is a test. </h1>
+
+<script>
+    // need to put it after the image icon being defined in the body. so put it behind the image element
+    let imgIcon = document.getElementById("icon");
+    alert(imgIcon);
+    imgIcon.src = "image/icon_2.jpg";
+
+    let title = document.getElementById("title");
+    title.innerHTML = " This is another test";
+
+
+
+</script>
+
+</body>
+</html>

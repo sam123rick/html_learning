@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Broswer Object Model</title>
+    <script>
+        // window.alert("hello");
+        /*
+        let flag = confirm("Are you sure to exit?");
+        let result = prompt("Please input user name");
+        */
+    </script>
+    <style>
+        p {
+            text-align: center;
+        }
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input id="openBtn" type="button" value="Click to Open a new window">
+    <input id="closeBtn" type="button" value="Click to close a new window"><br>
+
+    <img id="img1" src="image/banner_1.jpg" alt="image1"><br>
+
+    <input id="reloadBtn" type="button" value="reload"><br>
+
+    <input id="searchBtn" type="button" value="Search"><br>
+
+    <p>
+        <span id="time">5</span>s, will go back to main menu.
+    </p>
+    <script>
+        let openBtn = document.getElementById("openBtn");
+        let newWindow;
+        openBtn.onclick = function() {
+            //open();
+            newWindow = open("https://www.google.com");
+        }
+        let closeBtn = document.getElementById("closeBtn");
+        closeBtn.onclick = function() {
+            // close() itself will close the current window which calls the method
+            // close();
+            newWindow.close("https://www.google.com");
+        }
+        /*
+        // set up a timer for just one time
+        let timer1 = setTimeout("alert('boom')", 3000);
+        clearTimeout(timer1);
+
+        let timer2 = setInterval(fun, 2000);
+        function fun() {
+            alert("looping boom");
+        }
+        clearInterval(timer2);
+        */
+
+        let timer3 = setInterval(changeImage, 2000);
+        let num = 1;
+        function changeImage() {
+            num ++;
+            if (num > 3) {
+                num = 1;
+            }
+            let img = document.getElementById("img1");
+            img.src = "image/banner_" + num + ".jpg";
+        }
+
+        let history1 = history;
+
+        let reloadBtn = document.getElementById("reloadBtn");
+        reloadBtn.onclick = function() {
+            location.reload();
+        }
+
+        /*
+        let href = location.href;
+        alert(href);
+         */
+
+        let searchBtn = document.getElementById("searchBtn");
+        searchBtn.onclick = function() {
+            location.href = "https://www.google.com";
+        }
+
+        let countDown = document.getElementById("time");
+        let initTime = parseInt(countDown.innerText);
+        let timer4 = setInterval(changeText, 1000);
+        function changeText() {
+            initTime --;
+            if (!initTime) {
+                location.href = "https://www.google.com";
+            }
+            countDown.innerText = initTime;
+        }
+
+
+    </script>
+</body>
+</html>

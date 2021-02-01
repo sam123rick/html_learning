@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+    </script>
+</head>
+<body>
+
+    <img id="icon" src="image/icon_1.jpg" onclick="alert('Im been clicked')" alt="icon1"><br>
+    <img id="icon2" src="image/icon_2.jpg" onclick="fun()" alt="icon2"><br>
+    <img id="icon3" src="image/icon_3.jpg" alt="icon3">
+
+<script>
+    let icon3 = document.getElementById("icon3");
+    var flag = false;
+    icon3.onclick = function() {
+        icon3.src = "image/icon_" + fun() + ".jpg";
+    };
+
+    function fun() {
+        return Math.floor(Math.random() * 7) + 1;
+    }
+</script>
+
+</body>
+</html>

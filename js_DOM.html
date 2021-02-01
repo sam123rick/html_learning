@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+        div {
+            border: 1px solid red;
+        }
+        #div1 {
+            width: 200px;
+            height: 200px;
+        }
+        #div2 {
+            width: 100px;
+            height: 100px;
+        }
+        #div3 {
+            width: 100px;
+            height: 100px;
+        }
+        */
+
+        .d1 {
+            border: 2px solid blue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="div1">
+        <div id="div2">div2</div>
+        div1
+    </div>
+    <a id="del" href="javascript:void(0);">Delete child node</a>
+    <input type="button" >
+    <br>
+    <div id="div4">
+        div4
+    </div>
+
+    <script>
+        let element_a = document.getElementById("del");
+        element_a.onclick = function () {
+            let div1 = document.getElementById("div1");
+            let div2 = document.getElementById("div2");
+
+            /*
+            div1.removeChild(div2);
+
+            let div3 = document.createElement("div");
+            div3.setAttribute("id", "div3");
+
+            div1.appendChild(div3);
+             */
+
+            div1.style.border = "1px solid red";
+            div1.style.fontSize = "20px";
+
+            div2.className = "d1";
+        }
+        /*
+         <a> 1. can be clicked and style attached
+         2. After pressing, it will jump to the designed uri
+         Use  href="javascript:void(0);" we can dismiss the jumping for <a> tag
+         */
+
+        let div4 = document.getElementById("div4");
+        //div4.innerHTML = "<input type='text'>";
+        div4.innerHTML += "<input type='text'>";
+
+
+    </script>
+</body>
+</html>

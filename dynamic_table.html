@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+        td, th {
+            width: 125px;
+            text-align: center;
+            border: 1px solid;
+        }
+        div {
+            text-align: center;
+            margin: 50px
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="id" placeholder="Please input ID">
+        <input type="text" id="name" placeholder="Please input Name">
+        <input type="text" id="gender" placeholder="Please input Gender">
+        <input type="button" id="btn" value="add">
+    </div>
+    <br>
+    <br>
+    <table>
+        <caption>Student Information</caption>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Operation</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>Dave</td>
+            <td>Male</td>
+            <td><a href="javascript:void(0);" onclick="delTr(this);">Delete</a></td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Jakie</td>
+            <td>Female</td>
+            <td><a href="javascript:void(0);" onclick="delTr(this);">Delete</a></td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Linda</td>
+            <td>Bi</td>
+            <td><a href="javascript:void(0);" onclick="delTr(this);">Delete</a></td>
+        </tr>
+    </table>
+
+    <script>
+        /*
+        document.getElementById("btn").onclick = function () {
+            let td_id = document.createElement("td");
+            td_id.appendChild(document.createTextNode(document.getElementById("id").value));
+            let td_name = document.createElement("td");
+            td_name.appendChild(document.createTextNode(document.getElementById("name").value));
+            let td_gender = document.createElement("td");
+            td_gender.appendChild(document.createTextNode(document.getElementById("gender").value));
+            let hrefNode = document.createElement("a");
+            hrefNode.setAttribute("href", "javascript:void(0);");
+            hrefNode.setAttribute("onclick", "delTr(this);");
+            hrefNode.appendChild(document.createTextNode("Delete"));
+            let td_href = document.createElement("td");
+            td_href.appendChild(hrefNode);
+
+            let tr = document.createElement("tr");
+            tr.appendChild(td_id);
+            tr.appendChild(td_name);
+            tr.appendChild(td_gender);
+            tr.appendChild(td_href);
+
+            document.getElementsByTagName("table")[0].appendChild(tr);
+        }
+         */
+
+        document.getElementById("btn").onclick = function () {
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let gender = document.getElementById("gender").value;
+
+            let table = document.getElementsByTagName("table")[0];
+
+            table.innerHTML += "<tr>\n" + "        <td>" + id + "</td>\n" + "        <td>" + name + "</td>\n"
+                + "        <td>" + gender + "</td>\n"
+                + "        <td><a href=\"javascript:void(0);\" onclick=\"delTr(this);\">Delete</a></td>"
+                + "    </tr>";
+        }
+
+
+        function delTr(obj) {
+            let table = obj.parentNode.parentNode.parentNode;
+            let tr = obj.parentNode.parentNode;
+            table.removeChild(tr);
+        }
+    </script>
+</body>
+</html>
