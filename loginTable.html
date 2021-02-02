@@ -89,7 +89,52 @@
         .rg_right p a {
             color: pink;
         }
+        .error {
+            color: red;
+        }
+        .valid {
+            color: green;
+        }
     </style>
+    <script>
+        window.onload = function () {
+            document.getElementById("form").onsubmit = function () {
+                return checkUserName() && checkPassword();
+            }
+            document.getElementById("userName").onblur = checkUserName;
+            document.getElementById("password").onblur = checkPassword;
+        }
+
+        function checkUserName() {
+            let regUserName = /^\w{6,12}$/;
+            let valid = regUserName.test(document.getElementById("userName").value);
+            let sUserName = document.getElementById("s_userName");
+
+            if (valid) {
+                sUserName.innerHTML = "<p>Valid user name</p>";
+                sUserName.className = "valid";
+            } else {
+                sUserName.innerHTML = "<p>Invalid user name! Please type in again</p>";
+                sUserName.className = "error";
+            }
+            return valid;
+        }
+
+        function checkPassword() {
+            let regPassword = /^\w{6,12}$/;
+            let valid = regPassword.test(document.getElementById("password").value);
+            let sPassword = document.getElementById("s_password");
+
+            if (valid) {
+                sPassword.innerHTML = "<p>Valid Password</p>";
+                sPassword.className = "valid";
+            } else {
+                sPassword.innerHTML = "<p>Invalid Password! Please type in again</p>";
+                sPassword.className = "error";
+            }
+            return valid;
+        }
+    </script>
 </head>
 <body>
     <div class="rg_layout">
@@ -99,16 +144,22 @@
 
         <div class="rg_center">
             <div class="rg_form">
-                <form action="#" method="post">
+                <form action="#" method="post" id="form">
                     <table>
                         <tr>
                             <td class="td_left"><lable for="userName">User Name</lable></td>
-                            <td class="td_right"><input type="text" name="userName" id="userName" placeholder="Please type in User Name"></td>
+                            <td class="td_right">
+                                <input type="text" name="userName" id="userName" placeholder="Please type in User Name">
+                                <span id="s_userName"></span>
+                            </td>
                         </tr>
 
                         <tr>
                             <td class="td_left"><lable for="password">Password</lable></td>
-                            <td class="td_right"><input type="password" name="password" id="password" placeholder="Please type in Password"></td>
+                            <td class="td_right">
+                                <input type="password" name="password" id="password" placeholder="Please type in Password">
+                                <span id="s_password"></span>
+                            </td>
                         </tr>
 
                         <tr>
@@ -128,7 +179,7 @@
 
                         <tr>
                             <td class="td_left"><lable>Gender</lable></td>
-                            <td class="td_right"><input type="radio" name="gender"> Male <br>
+                            <td class="td_right"><input type="radio" name="gender" checked> Male <br>
                                 <input type="radio" name="gender"> Female <br>
                             </td>
                         </tr>

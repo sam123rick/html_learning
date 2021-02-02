@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SelectAllTable</title>
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+        td, th {
+            width: 125px;
+            text-align: center;
+            border: 1px solid;
+        }
+        div {
+            text-align: center;
+            margin: 50px
+        }
+        .out {
+            background-color: white;
+        }
+        .over {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <caption>Student Information</caption>
+    <tr>
+        <th><input type="checkbox" name="cb" id="selectAllCb"></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Operation</th>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="cb"></td>
+        <td>1</td>
+        <td>Dave</td>
+        <td>Male</td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">Delete</a></td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="cb"></td>
+        <td>2</td>
+        <td>Jakie</td>
+        <td>Female</td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">Delete</a></td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="cb"></td>
+        <td>3</td>
+        <td>Linda</td>
+        <td>Bi</td>
+        <td><a href="javascript:void(0);" onclick="delTr(this);">Delete</a></td>
+    </tr>
+</table>
+
+<div>
+<input type="button" value="Select All" id="selectAll">
+<input type="button" value="Unselect All" id="unSelectAll">
+<input type="button" value="Reverse" id="reverse">
+</div>
+
+<script>
+    document.getElementById("selectAll").onclick = function fun() {
+        let cbs = document.getElementsByName("cb");
+        cbs.forEach(function checkBox(cb) {
+            cb.checked = true;
+        });
+    };
+
+    document.getElementById("unSelectAll").onclick = function fun() {
+        let cbs = document.getElementsByName("cb");
+        cbs.forEach(function checkBox(cb) {
+            cb.checked = false;
+        });
+    };
+
+    document.getElementById("reverse").onclick = function fun() {
+        let cbs = document.getElementsByName("cb");
+        cbs.forEach(function checkBox(cb) {
+            cb.checked = !cb.checked;
+        });
+    };
+
+    document.getElementById("selectAllCb").onclick = function fun() {
+        let cbs = document.getElementsByName("cb");
+        for (let i = 0; i < cbs.length; i ++) {
+            cbs[i].checked = this.checked;
+        }
+    };
+
+    let trs = document.getElementsByTagName("tr");
+    for (let i = 0; i < trs.length; i ++) {
+        trs[i].onmouseover = function fun1() {
+            this.className = "over";
+        };
+        trs[i].onmouseout = function fun2() {
+            this.className = "out";
+        }
+    };
+
+</script>
+</body>
+</html>
